@@ -6,7 +6,11 @@ using UnityEngine;
 public class FrostDispenser : PointOfInterest
 {
     [SerializeField][Range(0, 1)] private float triggerChance;
+    [SerializeField] private SpawnArea spawnArea;
     protected override void OnTrigger() {
-        Guymon.Utilities.Logger.Info("Frost Dispenser Triggered");
+        if(Random.Range(0.0f, 1.0f) <= triggerChance) {
+            Guymon.Utilities.Logger.Info("Frost Dispenser Triggered");
+            spawnArea.Spawn();
+        }
     }
 }

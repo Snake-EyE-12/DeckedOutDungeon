@@ -17,6 +17,7 @@ public class PlayerInput : MonoBehaviour
             if(Input.GetKeyUp(sprintKey)) ir.OnEndSprint();
             if(Input.GetKeyDown(interactKey)) ir.OnStartInteract();
             if(Input.GetKeyUp(interactKey)) ir.OnEndInteract();
+            ir.OnTargetChange(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
     }
 }

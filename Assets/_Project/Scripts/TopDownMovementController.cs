@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -28,6 +29,9 @@ public class TopDownMovementController : MonoBehaviour, InputReceiver
     }
     public void OnEndSprint() {
         sprinting--;
+    }
+    public void OnTargetChange(Vector2 target) {
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x) - 90);
     }
     
 
