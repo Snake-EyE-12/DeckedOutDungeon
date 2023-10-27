@@ -7,8 +7,8 @@ public class Bucket : MonoBehaviour
     [SerializeField] private List<DungeonActionBase> dungeonActions = new List<DungeonActionBase>();
     [SerializeField][Min(0)][Tooltip("seconds")] private float playSpeed;
     private float elapsedTime;
-    private int frostCount = 0;
-    private int coinCount = 0;
+    //private int frostCount = 0;
+    //private int coinCount = 0;
 
 
     private void Update() {
