@@ -9,7 +9,7 @@ public class FrostDispenser : PointOfInterest
     [SerializeField] private SpawnArea spawnArea;
     protected override void OnTrigger() {
         if(Random.Range(0.0f, 1.0f) <= triggerChance) {
-            Guymon.Utilities.Logger.Info("Frost Dispenser Triggered");
+            Guymon.Utilities.Console.Info("Frost Dispenser Triggered");
             spawnArea.Spawn();
         }
     }

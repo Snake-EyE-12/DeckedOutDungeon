@@ -71,7 +71,7 @@ public class DungeonGenerator : MonoBehaviour
                             int y = focusPoint.roomPosCorner.y + 1;
                             for(int x = focusPoint.roomNegCorner.x; x <= focusPoint.roomPosCorner.x; x++) {
                                 if(!(inBounds(x, y, dungeon) && dungeon[x, y] <= DungeonSpot.Desolate)) {
-                                    Guymon.Utilities.Logger.Info("Cant Expand -Up- due to: " + x + ", " + y);
+                                    Guymon.Utilities.Console.Info("Cant Expand -Up- due to: " + x + ", " + y);
                                     isSpaceToExpand = false;
                                     break;
                                 }
@@ -94,7 +94,7 @@ public class DungeonGenerator : MonoBehaviour
                             int x = focusPoint.roomPosCorner.x + 1;
                             for(int y = focusPoint.roomNegCorner.y; y <= focusPoint.roomPosCorner.y; y++) {
                                 if(!(inBounds(x, y, dungeon) && dungeon[x, y] <= DungeonSpot.Desolate)) {
-                                    Guymon.Utilities.Logger.Info("Cant Expand -Right- due to: " + x + ", " + y);
+                                    Guymon.Utilities.Console.Info("Cant Expand -Right- due to: " + x + ", " + y);
                                     isSpaceToExpand = false;
                                     break;
                                 }
@@ -117,7 +117,7 @@ public class DungeonGenerator : MonoBehaviour
                             int y = focusPoint.roomNegCorner.y - 1;
                             for(int x = focusPoint.roomNegCorner.x; x <= focusPoint.roomPosCorner.x; x++) {
                                 if(!(inBounds(x, y, dungeon) && dungeon[x, y] <= DungeonSpot.Desolate)) {
-                                    Guymon.Utilities.Logger.Info("Cant Expand -Down- due to: " + x + ", " + y);
+                                    Guymon.Utilities.Console.Info("Cant Expand -Down- due to: " + x + ", " + y);
                                     isSpaceToExpand = false;
                                     break;
                                 }
@@ -140,7 +140,7 @@ public class DungeonGenerator : MonoBehaviour
                             int x = focusPoint.roomNegCorner.x - 1;
                             for(int y = focusPoint.roomNegCorner.y; y <= focusPoint.roomPosCorner.y; y++) {
                                 if(!(inBounds(x, y, dungeon) && dungeon[x, y] <= DungeonSpot.Desolate)) {
-                                    Guymon.Utilities.Logger.Info("Cant Expand -Left- due to: " + x + ", " + y);
+                                    Guymon.Utilities.Console.Info("Cant Expand -Left- due to: " + x + ", " + y);
                                     isSpaceToExpand = false;
                                     break;
                                 }
@@ -159,8 +159,8 @@ public class DungeonGenerator : MonoBehaviour
                     }
                     if(focusPoint.GetRoomSize().Equals(expandToSize)) {
                         //good
-                        Guymon.Utilities.Logger.Info("Created a good room of size: " + focusPoint.GetRoomSize() + " Starting at: " + focusPoint.roomCenter);
-                        Guymon.Utilities.Logger.Info("Details: Center: " + focusPoint.GetRoomSize() + " NegCorner: " + focusPoint.roomNegCorner + " PosCorner: " + focusPoint.roomPosCorner);
+                        Guymon.Utilities.Console.Info("Created a good room of size: " + focusPoint.GetRoomSize() + " Starting at: " + focusPoint.roomCenter);
+                        Guymon.Utilities.Console.Info("Details: Center: " + focusPoint.GetRoomSize() + " NegCorner: " + focusPoint.roomNegCorner + " PosCorner: " + focusPoint.roomPosCorner);
                         focusPoint.room = true;
                         drawInArea(focusPoint, dungeon);
                         completedArea = true;
@@ -171,8 +171,8 @@ public class DungeonGenerator : MonoBehaviour
                     if(!completedArea && maxSizeHit[0] && maxSizeHit[1] && maxSizeHit[2] && maxSizeHit[3]) {
                         if(focusPoint.GetRoomSize().x >= minRoomSize.x && focusPoint.GetRoomSize().y >= minRoomSize.y) {
                             //fine
-                            Guymon.Utilities.Logger.Info("Created a fine room of size: " + focusPoint.GetRoomSize() + ", compared to: " + expandToSize + " Starting at: " + focusPoint.roomCenter);
-                            Guymon.Utilities.Logger.Info("Details: Center: " + focusPoint.GetRoomSize() + " NegCorner: " + focusPoint.roomNegCorner + " PosCorner: " + focusPoint.roomPosCorner);
+                            Guymon.Utilities.Console.Info("Created a fine room of size: " + focusPoint.GetRoomSize() + ", compared to: " + expandToSize + " Starting at: " + focusPoint.roomCenter);
+                            Guymon.Utilities.Console.Info("Details: Center: " + focusPoint.GetRoomSize() + " NegCorner: " + focusPoint.roomNegCorner + " PosCorner: " + focusPoint.roomPosCorner);
                             focusPoint.room = true;
                             drawInArea(focusPoint, dungeon);
                             completedArea = true;
@@ -181,8 +181,8 @@ public class DungeonGenerator : MonoBehaviour
                         }
                         else {
                             //bad
-                            Guymon.Utilities.Logger.Info("Created a bad room of size: " + focusPoint.GetRoomSize() + ", trying to reach: " + expandToSize + " Starting at: " + focusPoint.roomCenter);
-                            Guymon.Utilities.Logger.Info("Details: Center: " + focusPoint.GetRoomSize() + " NegCorner: " + focusPoint.roomNegCorner + " PosCorner: " + focusPoint.roomPosCorner);
+                            Guymon.Utilities.Console.Info("Created a bad room of size: " + focusPoint.GetRoomSize() + ", trying to reach: " + expandToSize + " Starting at: " + focusPoint.roomCenter);
+                            Guymon.Utilities.Console.Info("Details: Center: " + focusPoint.GetRoomSize() + " NegCorner: " + focusPoint.roomNegCorner + " PosCorner: " + focusPoint.roomPosCorner);
                             drawInArea(focusPoint, dungeon);
                             completedArea = true;
                             areas.Add(focusPoint);
@@ -193,7 +193,7 @@ public class DungeonGenerator : MonoBehaviour
             }
             complete = (totalAreaFilled >= dungeon.GetLength(0) * dungeon.GetLength(1) * coveragePercent) || goodRoomCount == maxRoomCount;
         }
-        Guymon.Utilities.Logger.Info("Completed in " + loopCount + " loops");
+        Guymon.Utilities.Console.Info("Completed in " + loopCount + " loops");
         ConsoleDisplay(dungeon);
     }
     private void drawInArea(Area area, DungeonSpot[,] canvas) {
@@ -222,7 +222,7 @@ public class DungeonGenerator : MonoBehaviour
         loopCount++;
         errors[index]++;
         if(loopCount >= maxLoopage) {
-            Guymon.Utilities.Logger.Warning("Broke by: " + message + " with " + errors[index]);
+            Guymon.Utilities.Console.Warning("Broke by: " + message + " with " + errors[index]);
             return true;
         }
         return false;

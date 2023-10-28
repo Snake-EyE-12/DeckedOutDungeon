@@ -24,7 +24,7 @@ public class MarchingSquares2 : MonoBehaviour
         public int diagram = -1;
         public Cell(float randomValue) {
             value = randomValue;
-            if(IntValue() > 1) Guymon.Utilities.Logger.Warning("Need To Clamp Random Value For Marching Square Cells!!!!");
+            if(IntValue() > 1) Guymon.Utilities.Console.Warning("Need To Clamp Random Value For Marching Square Cells!!!!");
         }
         public int IntValue() {
             return (int)(value + 1);
