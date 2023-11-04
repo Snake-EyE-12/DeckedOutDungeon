@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpawnArea : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D prefab;
+    [SerializeField] private GameObject defaultPrefab;
     [SerializeField][Range(0, 360)] private float angle;
     [SerializeField][Range(0, 360)] private float arc;
     [SerializeField] private float minForce;
@@ -14,7 +14,11 @@ public class SpawnArea : MonoBehaviour
 
     [ContextMenu(nameof(Spawn))]
     public void Spawn() {
-        Rigidbody2D rb = Instantiate(prefab.gameObject, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+        Rigidbody2D rb = Instantiate(defaultPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+        rb.AddForce((Quaternion.AngleAxis(0.5f * Random.Range(-arc, arc), Vector3.forward) * getCenterDirection(angle)).normalized * Random.Range(minForce, maxForce) * 50 * rb.mass);
+    }
+    public void Spawn(GameObject prefab) {
+        Rigidbody2D rb = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
         rb.AddForce((Quaternion.AngleAxis(0.5f * Random.Range(-arc, arc), Vector3.forward) * getCenterDirection(angle)).normalized * Random.Range(minForce, maxForce) * 50 * rb.mass);
     }
     private Vector2 getCenterDirection(float degrees) {

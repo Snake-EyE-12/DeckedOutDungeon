@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour, InputSender
         if(Input.GetKeyUp(interactKey)) interacting = false;
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
-    public Vector2? GetMoveDirection() {
+    public Vector2 GetMoveDirection() {
         return movementInput;
     }
     public bool IsSprinting() {
@@ -38,7 +38,7 @@ public class PlayerInput : MonoBehaviour, InputSender
     public bool IsInteracting() {
         return interacting;
     }
-    public Vector2? GetLookDirection() {
+    public Vector2 GetLookDirection() {
         return mousePos;
     }
     public float GetScrollDirection() {

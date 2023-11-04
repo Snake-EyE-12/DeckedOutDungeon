@@ -830,8 +830,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c1582a764df4a84b9db8134f4b91ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonActions: []
-  playSpeed: 0.5
+  dungeonActions:
+  - {fileID: 11400000, guid: 2c87dc62635ef9a44b87c15c2605a951, type: 2}
+  - {fileID: 11400000, guid: 2c87dc62635ef9a44b87c15c2605a951, type: 2}
+  - {fileID: 11400000, guid: 2c87dc62635ef9a44b87c15c2605a951, type: 2}
+  - {fileID: 11400000, guid: 2c87dc62635ef9a44b87c15c2605a951, type: 2}
+  - {fileID: 11400000, guid: 2c87dc62635ef9a44b87c15c2605a951, type: 2}
+  - {fileID: 11400000, guid: 2c87dc62635ef9a44b87c15c2605a951, type: 2}
+  - {fileID: 11400000, guid: 2c87dc62635ef9a44b87c15c2605a951, type: 2}
+  playSpeed: 5
 --- !u!114 &104145737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,7 +918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minMovementSpeed: 500
-  maxMovementSpeed: 500
+  maxMovementSpeed: 600
 --- !u!4 &104145742
 Transform:
   m_ObjectHideFlags: 0

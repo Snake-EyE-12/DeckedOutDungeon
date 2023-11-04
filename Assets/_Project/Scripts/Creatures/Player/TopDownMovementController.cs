@@ -1,44 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 public class TopDownMovementController : MonoBehaviour
 {
-    private Vector2 moveDirection;
-    private int sprinting = 0;
-    private Rigidbody2D rb2d;
 
     [SerializeField] private float minMovementSpeed;
     [SerializeField] private float maxMovementSpeed;
 
+    private Rigidbody2D rb2d;
+    private InputSender playerInput;
     private void Awake() {
         rb2d = GetComponent<Rigidbody2D>();
+        playerInput = GetComponent<InputSender>();
     }
 
-
-
-    public void OnDirectionChange(Vector2 direction) {
-        moveDirection = direction;
-    }
-    public void OnStartSprint() {
-        sprinting++;
-    }
-    public void OnEndSprint() {
-        sprinting--;
-    }
-    public void OnTargetChange(Vector2 target) {
-        transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x) - 90);
-    }
-    
 
 
 
     private void Update() {
-        rb2d.AddForce(moveDirection.normalized * maxMovementSpeed * Time.deltaTime * (sprinting + 1));
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(playerInput.GetLookDirection().y - transform.position.y, playerInput.GetLookDirection().x - transform.position.x) - 90);
+        rb2d.AddForce(playerInput.GetMoveDirection().normalized * maxMovementSpeed * Time.deltaTime * (playerInput.IsSprinting() ? 2 : 1));
     }
 }

@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc6c0ed6242063c478c87d47eb59e265, type: 3}
-  m_Name: GenerateClank
+  m_Script: {fileID: 11500000, guid: 873d6754b56491b4fa7d371a3ff4b2c8, type: 3}
+  m_Name: FrostDispence
   m_EditorClassIdentifier: 
-  eventNames:
-  - Clank

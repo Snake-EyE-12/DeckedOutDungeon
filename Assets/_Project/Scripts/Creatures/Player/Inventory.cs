@@ -12,14 +12,9 @@ public class Inventory : MonoBehaviour
     private InputSender playerInput;
     private void Awake() {
         playerInput = GetComponent<InputSender>();
+        data.items.Clear();
 
         //test stuff
-        data.items.Clear();
-        AddItem(new InventoryItem("Ruby", 1, spritesForTesting[0]));
-        AddItem(new InventoryItem("Stone", 1, spritesForTesting[1]));
-        AddItem(new InventoryItem("Stone", 2, spritesForTesting[1]));
-        AddItem(new InventoryItem("Red", 1, spritesForTesting[2]));
-        AddItem(new InventoryItem("Blue", 1, spritesForTesting[3]));
         //end
     }
     public void AddItem(InventoryItem item) {
@@ -32,7 +27,18 @@ public class Inventory : MonoBehaviour
         data.items.Add(item);
     }
     private void Update() {
+        updateSelectedSlot();
+    }
+    private void updateSelectedSlot() {
+        if(data.items.Count <= 0) return;
         slot += playerInput.GetScrollDirection() * scrollSpeed * Time.deltaTime;
         data.selectedSlot = (int)Mathf.Abs(slot) % data.items.Count;
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        CollectableItem collectable;
+        if(other.TryGetComponent<CollectableItem>(out collectable)) {
+            AddItem(collectable.getItemStack());
+            Destroy(other.gameObject);
+        }
     }
 }
