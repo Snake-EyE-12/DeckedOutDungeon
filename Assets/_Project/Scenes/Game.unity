@@ -566,6 +566,7 @@ GameObject:
   - component: {fileID: 656953906}
   - component: {fileID: 656953905}
   - component: {fileID: 656953904}
+  - component: {fileID: 656953909}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -715,6 +716,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.18, y: 1.64}
   m_EdgeRadius: 0
+--- !u!114 &656953909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656953901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324bab812d4850a4abbf8e21d34e4a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &683196912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,6 +1348,7 @@ GameObject:
   - component: {fileID: 1368944466}
   - component: {fileID: 1368944465}
   - component: {fileID: 1368944467}
+  - component: {fileID: 1368944468}
   m_Layer: 0
   m_Name: -----Managers-----
   m_TagString: Untagged
@@ -1385,6 +1399,27 @@ MonoBehaviour:
   registry:
   - ID: 
     prefab: {fileID: 0}
+--- !u!114 &1368944468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368944464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58412ce795703af43a7d9a37f97d1da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolution: 0
+  gridSize: {x: 0, y: 0}
+  gridScale: 0
+  wallPrefab: {fileID: 0}
+  pillarPrefab: {fileID: 0}
+  wallWidthScale: 0
+  pillarScale: 0
+  minimumWallLengthForFrame: 0
+  openLoopsAttempts: 0
 --- !u!1 &1478029958
 GameObject:
   m_ObjectHideFlags: 0
